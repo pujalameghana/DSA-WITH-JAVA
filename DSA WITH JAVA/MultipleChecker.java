@@ -1,31 +1,39 @@
-public class MultipleChecker {
-    public static int checkMultiple(int num1, int num2) {
-        // Check if num1 is a multiple of num2
-        if (num2 != 0 && num1 % num2 == 0) {
-            return 1; // num1 is a multiple of num2
-        } else {
-            return 0; // num1 is not a multiple of num2
+public class NumberCounter {
+    public static int countNumbers(int num1, int num2, int num3, int num4, int num5, String type) {
+        int count = 0;
+        
+        // Check the type and count accordingly
+        if (type.equalsIgnoreCase("even")) {
+            if (num1 % 2 == 0) count++;
+            if (num2 % 2 == 0) count++;
+            if (num3 % 2 == 0) count++;
+            if (num4 % 2 == 0) count++;
+            if (num5 % 2 == 0) count++;
+        } else if (type.equalsIgnoreCase("odd")) {
+            if (num1 % 2 != 0) count++;
+            if (num2 % 2 != 0) count++;
+            if (num3 % 2 != 0) count++;
+            if (num4 % 2 != 0) count++;
+            if (num5 % 2 != 0) count++;
         }
+        
+        return count;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        // Test the countNumbers method
+        int num1 = 10;
+        int num2 = -5;
+        int num3 = 0;
+        int num4 = 15;
+        int num5 = -20;
         
-        // Prompt the user to enter two numbers
-        System.out.println("Enter the first number:");
-        int num1 = scanner.nextInt();
+        // Count even numbers
+        int evenCount = countNumbers(num1, num2, num3, num4, num5, "even");
+        System.out.println("Number of even numbers: " + evenCount);
         
-        System.out.println("Enter the second number:");
-        int num2 = scanner.nextInt();
-        
-        // Call the checkMultiple method and print the result
-        int result = checkMultiple(num1, num2);
-        if (result == 1) {
-            System.out.println(num1 + " is a multiple of " + num2);
-        } else {
-            System.out.println(num1 + " is not a multiple of " + num2);
-        }
-        
-        scanner.close();
+        // Count odd numbers
+        int oddCount = countNumbers(num1, num2, num3, num4, num5, "odd");
+        System.out.println("Number of odd numbers: " + oddCount);
     }
 }
